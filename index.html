@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+   <title>
+        WS Test
+   </title>
+  </head>
+  <body>
+    <script>
+      // Important: add Engine.IO handshake params (EIO=4, transport=websocket)
+      const ws = new WebSocket("http://localhost:28189/socket.io/?EIO=4&transport=websocket", ["streamdeck_ttls_v1"]);
+      ws.onopen = () => {
+        console.log("Connected with protocol:", ws.protocol);
+        // Step 1: Engine.IO requires an "open" packet
+        // "40" = open + Socket.IO connect
+        ws.send("40");
+        // Step 2: Emit some Socket.IO events
+        // setTimeout(() => {
+        //   ws.send('42["hello","Hello from browser1!"]');
+        // }, 500);
+      };
+      ws.onmessage = (event) => {
+        console.log("Raw message from server:", event.data);
+        if (event.data.startsWith("0")) {
+            ws.send("40");
+        }
+        else if(event.data.startsWith("2")) {
+            ws.send("3");
+        }
+        else if(event.data.startsWith("40")) {
+            ws.send('42["hello","Hello from browser1!"]');
+        }
+        // Parse Socket.IO messages
+        else if (event.data.startsWith("42")) {
+          try {
+            const [eventName, payload] = JSON.parse(event.data.slice(2));
+            console.log("Parsed event:", eventName, "payload:", payload);
+          } catch (e) {
+            console.error("Failed to parse:", event.data);
+          }
+        }
+      };
+      ws.onclose = () => {
+        console.log("Connection closed");
+      };
+    </script>
+</body>
+</html>
