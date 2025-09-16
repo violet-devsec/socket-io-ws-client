@@ -28,7 +28,7 @@
             ws.send("3");
         }
         else if(event.data.startsWith("40")) {
-            ws.send('42["hello","Hello from browser1!"]');
+            ws.send('42["action_emit",{ action: "mic_switch", payload: null }]');
         }
         // Parse Socket.IO messages
         else if (event.data.startsWith("42")) {
