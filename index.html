@@ -9,6 +9,7 @@
     <script>
       // Important: add Engine.IO handshake params (EIO=4, transport=websocket)
       const ws = new WebSocket("http://localhost:28189/socket.io/?EIO=4&transport=websocket", ["streamdeck_ttls_v1"]);
+        const i = 1;
       ws.onopen = () => {
         console.log("Connected with protocol:", ws.protocol);
         // Step 1: Engine.IO requires an "open" packet
@@ -30,8 +31,11 @@
         else if(event.data.startsWith("40")) {
             //ws.send('42["hello","Hello from browser1!"]');
             //ws.send('42["action_emit","{action:"com.tiktok.livestudio.mic"}"]');
+            if (i == 1)
+            {
             ws.send('42["action_emit",{"action":"com.tiktok.livestudio.mic","payload":""}]');
-
+            }
+            i++;
         }
         // Parse Socket.IO messages
         else if (event.data.startsWith("42")) {
