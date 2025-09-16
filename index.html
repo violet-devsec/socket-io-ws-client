@@ -29,7 +29,9 @@
         }
         else if(event.data.startsWith("40")) {
             //ws.send('42["hello","Hello from browser1!"]');
-            ws.send('42["action_emit","{action:"com.tiktok.livestudio.mic"}"]');
+            //ws.send('42["action_emit","{action:"com.tiktok.livestudio.mic"}"]');
+            ws.send('42["action_emit",{"action":"com.tiktok.livestudio.mic"}]');
+
         }
         // Parse Socket.IO messages
         else if (event.data.startsWith("42")) {
