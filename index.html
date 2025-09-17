@@ -9,7 +9,7 @@
     <script>
       // Important: add Engine.IO handshake params (EIO=4, transport=websocket)
       const ws = new WebSocket("http://localhost:28189/socket.io/?EIO=4&transport=websocket", ["streamdeck_ttls_v1"]);
-      const i = 1;
+      var i = 1;
       ws.onopen = () => {
         console.log("Connected with protocol:", ws.protocol);
         // Step 1: Engine.IO requires an "open" packet
@@ -34,10 +34,10 @@
             {
                 ws.send('42["stream_deck/join_room","{}"]');
             }
-            if (i === 2)
-            {
-                ws.send('42["action_emit",{"action":"com.tiktok.livestudio.mic","payload":""}]');
-            }
+            //if (i === 2)
+            //{
+            //    ws.send('42["action_emit",{"action":"com.tiktok.livestudio.mic","payload":""}]');
+            //}
             i++;
         }
         // Parse Socket.IO messages
@@ -45,6 +45,7 @@
           try {
             const [eventName, payload] = JSON.parse(event.data.slice(2));
             console.log("Parsed event:", eventName, "payload:", payload);
+            ws.send('42["action_emit",{"action":"com.tiktok.livestudio.mic","payload":""}]');
           } catch (e) {
             console.error("Failed to parse:", event.data);
           }
