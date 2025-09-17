@@ -30,7 +30,14 @@
         }
         else if(event.data.startsWith("40")) {
             //ws.send('42["hello","Hello from browser1!"]');
-            
+            if (i === 2)
+            {
+                ws.send('42["stream_deck/join_room","{}"]');
+            }
+            if (i === 2)
+            {
+                ws.send('42["action_emit",{"action":"com.tiktok.livestudio.mic","payload":""}]');
+            }
             i++;
         }
         // Parse Socket.IO messages
