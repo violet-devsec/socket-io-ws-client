@@ -45,7 +45,7 @@
           try {
             const [eventName, payload] = JSON.parse(event.data.slice(2));
             console.log("Parsed event:", eventName, "payload:", payload);
-            ws.send('42["action_emit",{"action":"com.tiktok.livestudio.mic","payload":""}]');
+            ws.send('42["stream_deck/action_emit",{"action":"com.tiktok.livestudio.mic","payload":""}]');
           } catch (e) {
             console.error("Failed to parse:", event.data);
           }
