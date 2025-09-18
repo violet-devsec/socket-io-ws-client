@@ -54,7 +54,7 @@
                         action: "com.tiktok.livestudio.equalizer",
                     };
                     const msg = JSON.stringify(payload);
-                    ws.send('42["stream_deck/action_emit",'+ msg +']');
+                    ws.send('42["stream_deck/action_emit","'+ msg +'"]');
                 }
                 i++;
           } catch (e) {
