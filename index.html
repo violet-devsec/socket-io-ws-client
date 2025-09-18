@@ -32,7 +32,7 @@
             //ws.send('42["hello","Hello from browser1!"]');
             if (i === 1)
             {
-                ws.send('42["stream_deck/join_room","{}"]');
+                ws.send('42["stream_deck/join_room"]');
             }
             //if (i === 2)
             //{
@@ -47,7 +47,8 @@
                 console.log("Parsed event:", eventName, "payload:", payload);
                 if(i < 5)
                 {
-                    ws.send('42["stream_deck/action_emit",{\"action\":\"\"}]');
+                    //ws.send('42["stream_deck/action_emit",{\"action\":\"com.tiktok.livestudio.mic\"}]');
+                    ws.send('42["stream_deck/sync_settings"]');
                 }
                 i++;
           } catch (e) {
