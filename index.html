@@ -48,13 +48,13 @@
                 if(i < 5)
                 {
                     //ws.send('42["stream_deck/action_emit",{\"action\":\"com.tiktok.livestudio.mic\"}]');
-                    //ws.send('42["stream_deck/sync_settings"]');
-                    const payload = {
-                        context: "test",
-                        action: "com.tiktok.livestudio.equalizer",
-                    };
-                    const msg = JSON.stringify(payload);
-                    ws.send('42["stream_deck/action_emit","'+ msg +'"]');
+                    ws.send('42["stream_deck/sync_settings"]');
+                    //const payload = {
+                    //   context: "test",
+                    //    action: "com.tiktok.livestudio.equalizer",
+                    //};
+                    //const msg = JSON.stringify(payload);
+                    //ws.send('42["stream_deck/action_emit",'+ msg +']');
                 }
                 i++;
           } catch (e) {
