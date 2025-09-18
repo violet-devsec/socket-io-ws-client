@@ -53,7 +53,8 @@
                         context: "test",
                         action: "com.tiktok.livestudio.equalizer",
                     };
-                    ws.send('42["stream_deck/action_emit",${JSON.stringify(payload)}]');
+                    const msg = JSON.stringify(payload);
+                    ws.send('42["stream_deck/action_emit", ${msg}]');
                 }
                 i++;
           } catch (e) {
