@@ -49,13 +49,13 @@
                 {
                     //ws.send('42["stream_deck/action_emit",{\"action\":\"com.tiktok.livestudio.mic\"}]');
                     //ws.send('42["stream_deck/sync_settings"]');
-                    ws.send('42["stream_deck/device_status_emit", {"status":"connected"}]');
-                    //const payload = {
-                    //   context: "test",
-                    //    action: "com.tiktok.livestudio.equalizer",
-                    //};
-                    //const msg = JSON.stringify(payload);
-                    //ws.send('42["stream_deck/action_emit",'+ msg +']');
+                    //ws.send('42["stream_deck/device_status_emit", {"status":"connected"}]');
+                    const payload = {
+                       context: "live",
+                        action: "com.tiktok.livestudio.audio",
+                    };
+                    const msg = JSON.stringify(payload);
+                    ws.send('42["stream_deck/action_emit",'+ msg +']');
                 }
                 i++;
           } catch (e) {
