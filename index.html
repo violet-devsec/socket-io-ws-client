@@ -48,7 +48,8 @@
                 if(i < 5)
                 {
                     //ws.send('42["stream_deck/action_emit",{\"action\":\"com.tiktok.livestudio.mic\"}]');
-                    ws.send('42["stream_deck/sync_settings"]');
+                    //ws.send('42["stream_deck/sync_settings"]');
+                    ws.send('42["stream_deck/device_status_emit", {"status":"connected"}]');
                     //const payload = {
                     //   context: "test",
                     //    action: "com.tiktok.livestudio.equalizer",
